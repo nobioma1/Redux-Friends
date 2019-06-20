@@ -1,10 +1,20 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import FriendList from '../FriendsList';
+import Header from '../Header';
+import NotFound from '../NotFound';
 
 function App() {
   return (
-    <div className="App">
-      <Container>App</Container>
+    <div>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={FriendList} />
+          <Route path="/login" />
+          <Route render={props => <NotFound {...props} />} />
+        </Switch>
+      </Router>
     </div>
   );
 }
